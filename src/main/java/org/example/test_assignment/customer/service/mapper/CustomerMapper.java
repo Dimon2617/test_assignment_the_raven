@@ -5,25 +5,21 @@ import org.example.test_assignment.customer.entity.CustomerEntity;
 import org.example.test_assignment.customer.request.CustomerRequest;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-
 @Component
 public class CustomerMapper {
 
     public CustomerEntity toEntity(CustomerRequest customerDTO) {
         return CustomerEntity.builder()
-                .full_name(customerDTO.getFull_name())
-                .created(LocalDate.now())
+                .fullName(customerDTO.getFullName())
                 .email(customerDTO.getEmail())
                 .phone(customerDTO.getPhone())
-                .is_active(true)
                 .build();
     }
 
     public CustomerDTO toDTO(CustomerEntity customerEntity) {
         return CustomerDTO.builder()
                 .id(customerEntity.getId())
-                .full_name(customerEntity.getFull_name())
+                .fullName(customerEntity.getFullName())
                 .email(customerEntity.getEmail())
                 .phone(customerEntity.getPhone())
                 .build();

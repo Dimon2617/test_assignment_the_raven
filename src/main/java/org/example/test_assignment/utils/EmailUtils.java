@@ -11,7 +11,7 @@ public class EmailUtils {
     private static final Pattern EMAIL_PATTERN;
 
     static {
-        final String EMAIL_PATTERN_REGEX = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z]{2,}$";
+        final String EMAIL_PATTERN_REGEX = "^(?=.{2,100}$)[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z]{2,}$";
         EMAIL_PATTERN = Pattern.compile(EMAIL_PATTERN_REGEX);
     }
 

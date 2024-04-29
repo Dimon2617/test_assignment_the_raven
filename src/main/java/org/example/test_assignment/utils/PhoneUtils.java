@@ -1,7 +1,5 @@
 package org.example.test_assignment.utils;
 
-import org.apache.commons.lang3.StringUtils;
-import org.example.test_assignment.customer.exceptions.EmailNotValidException;
 import org.example.test_assignment.customer.exceptions.PhoneNotValidException;
 
 import java.util.regex.Matcher;
@@ -12,15 +10,12 @@ public class PhoneUtils {
     private static final Pattern PHONE_PATTERN;
 
     static {
-        final String PHONE_PATTERN_REGEX = "^\\+[0-9]{1,13}[0-9]$";
+        final String PHONE_PATTERN_REGEX = "^\\+[0-9]{5,13}[0-9]$";
         PHONE_PATTERN = Pattern.compile(PHONE_PATTERN_REGEX);
     }
 
-    public static void validateEmail(String email) {
-        if (StringUtils.isBlank(email)) {
-            throw new PhoneNotValidException("Phone is null or empty");
-        }
-        Matcher matcher = PHONE_PATTERN.matcher(email);
+    public static void validatePhone(String phone) {
+        Matcher matcher = PHONE_PATTERN.matcher(phone);
         if (!matcher.matches()) {
             throw new PhoneNotValidException("Invalid phone");
         }

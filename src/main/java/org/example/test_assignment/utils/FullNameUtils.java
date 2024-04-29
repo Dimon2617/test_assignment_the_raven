@@ -7,20 +7,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FullNameUtils {
-    private static final Pattern FULLNAME_PATTERN;
+
+    private static final Pattern FULL_NAME_PATTERN;
 
     static {
-        final String FULLNAME_PATTERN_REGEX = "^\\s*(?=.{2,50}$)[A-Za-z\\s]+$";
-        FULLNAME_PATTERN = Pattern.compile(FULLNAME_PATTERN_REGEX);
+        final String FULL_NAME_PATTERN_REGEX = "^\\s*(?=.{2,50}$)[A-Za-z\\s]+$";
+        FULL_NAME_PATTERN = Pattern.compile(FULL_NAME_PATTERN_REGEX);
     }
 
-    public static void validateEmail(String email) {
-        if (StringUtils.isBlank(email)) {
+    public static void validateFullName(String fullName) {
+        if (StringUtils.isBlank(fullName)) {
             throw new EmailNotValidException("Full name is null or empty");
         }
-        Matcher matcher = FULLNAME_PATTERN.matcher(email);
+        Matcher matcher = FULL_NAME_PATTERN.matcher(fullName);
         if (!matcher.matches()) {
             throw new EmailNotValidException("Invalid full name");
         }
     }
+
 }

@@ -5,13 +5,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 @Data
 @Entity
@@ -26,13 +26,13 @@ public class CustomerEntity {
     private Long id;
 
     @Column(nullable = false)
-    private LocalDate created;
-
-    @Column()
-    private LocalDate updated;
+    private Long created;
 
     @Column(nullable = false)
-    private String full_name;
+    private Long updated;
+
+    @Column(nullable = false)
+    private String fullName;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -41,6 +41,15 @@ public class CustomerEntity {
     private String phone;
 
     @Column(nullable = false)
-    private boolean is_active;
+    private boolean isActive;
+
+    @PrePersist
+    @PreUpdate
+    protected void onCreate() {
+        if (created == null) {
+            created = System.currentTimeMillis();
+        }
+        updated = System.currentTimeMillis();
+    }
 
 }

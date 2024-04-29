@@ -10,7 +10,8 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
     boolean existsByEmail(String email);
-    @Query("SELECT c FROM CustomerEntity c WHERE c.is_active = true")
+
+    @Query("SELECT c FROM CustomerEntity c WHERE c.isActive = true")
     List<CustomerEntity> findAllActiveCustomers();
 
 }
