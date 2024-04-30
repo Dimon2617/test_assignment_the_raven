@@ -38,9 +38,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc(addFilters = false)
 public class CustomerControllerTest {
 
-    @MockBean
-    CustomerMapper customerMapper;
-
     @Autowired
     private MockMvc mockMvc;
 

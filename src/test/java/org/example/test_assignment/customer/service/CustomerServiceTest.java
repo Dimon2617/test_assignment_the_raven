@@ -39,9 +39,6 @@ public class CustomerServiceTest {
     @MockBean
     private CustomerRepository customerRepository;
 
-    @Autowired
-    private CustomerMapper customerMapper;
-
     @Test
     public void testGetAllCustomersSuccess() {
         CustomerEntity customerEntity1 = customerHelper.createCustomer();
@@ -210,11 +207,5 @@ public class CustomerServiceTest {
                 .isInstanceOf(CustomerNotExistsException.class)
                 .hasMessageContaining("Customer by id " + userId + " not found");
     }
-
-
-
-
-
-
 
 }
