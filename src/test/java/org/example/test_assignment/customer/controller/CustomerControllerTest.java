@@ -5,7 +5,6 @@ import org.example.test_assignment.customer.dto.CustomerDTO;
 import org.example.test_assignment.customer.helpers.CustomerHelper;
 import org.example.test_assignment.customer.request.CustomerRequest;
 import org.example.test_assignment.customer.service.CustomerService;
-import org.example.test_assignment.customer.service.mapper.CustomerMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,9 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -84,10 +81,10 @@ public class CustomerControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/customers/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(customerDTO.getId()))
-                .andExpect(jsonPath("$[0].fullName").value(customerDTO.getFullName()))
-                .andExpect(jsonPath("$[0].email").value(customerDTO.getEmail()))
-                .andExpect(jsonPath("$[0].phone").value(customerDTO.getPhone()));
+                .andExpect(jsonPath("$.id").value(customerDTO.getId()))
+                .andExpect(jsonPath("$.fullName").value(customerDTO.getFullName()))
+                .andExpect(jsonPath("$.email").value(customerDTO.getEmail()))
+                .andExpect(jsonPath("$.phone").value(customerDTO.getPhone()));
     }
 
     @Test
